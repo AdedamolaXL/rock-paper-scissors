@@ -1,0 +1,39 @@
+ function game() {
+     const gameChoices = ("rock, paper, scissors")
+  function gameRound(playerSelection, computerSelection) {
+      alert('Hey buddy, show your hand');
+
+      var playerSelection = prompt(gameChoice, '');
+      var ps = playerSelection.toLowerCase();
+
+      function computerPlay() {
+       return gameChoices[Math.round(Math.random() * gameChoices.length)];
+      }
+      computerPlay(); 
+      var computerSelection = computerPlay();
+      var cs = computerSelection;
+
+      if ((ps == 'Rock' && cs == 'Scissors') || (ps == 'Paper' && cs == 'Rock') || (ps == 'Scissors' && cs == 'Paper')) {
+       psWin++
+       return `You Lose! ${cs} beats ${ps}`;
+      } else if (cs == ps) {
+       return 'It\'s a tie';
+      } else {
+       csWin++
+       return `You Win! ${ps} beats ${cs}`;
+      } 
+  } 
+  gameRound();
+  var round = gameRound();
+    round = 0;
+     for (round = 0; round < 5; round++) {
+         console.log(round);
+                  if (psWin > csWin) {
+                      alert('You Win! Score ' + psWin '-' + csWin);
+                  } else {
+                      alert('Computer Wins! Score ' + psWin '-' + csWin);
+                  }
+
+     }
+}   
+game();
