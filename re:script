@@ -1,26 +1,32 @@
- function game() {
-     const gameChoices = ("rock, paper, scissors")
+<script>
+     function game() {
+     var gameChoices = ["rock, paper, scissors"]
+
   function gameRound(playerSelection, computerSelection) {
-      alert('Hey buddy, show your hand');
+      alert('Hey buddy, what\'s your hand');
 
-      var playerSelection = prompt(gameChoice, '');
+      var playerSelection = prompt(gameChoices, '');
       var ps = playerSelection.toLowerCase();
-
+       
+      var computerSelection;
       function computerPlay() {
-       return gameChoices[Math.round(Math.random() * gameChoices.length)];
+       return gameChoices[Math.round(Math.random() * 2)];
       }
       computerPlay(); 
-      var computerSelection = computerPlay();
+      computerSelection = computerPlay();
       var cs = computerSelection;
 
-      if ((ps == 'Rock' && cs == 'Scissors') || (ps == 'Paper' && cs == 'Rock') || (ps == 'Scissors' && cs == 'Paper')) {
-       psWin++
-       return `You Lose! ${cs} beats ${ps}`;
-      } else if (cs == ps) {
+      var csWin = 0;
+      var psWin = 0;
+
+      if ((ps == 'rock' && cs == 'scissors') || (ps == 'paper' && cs == 'rock') || (ps == 'scissors' && cs == 'paper')) {
+       psWin++;
+       return `You Win! ${ps} beats ${cs}`;
+      } else if (ps == cs) {
        return 'It\'s a tie';
       } else {
-       csWin++
-       return `You Win! ${ps} beats ${cs}`;
+       csWin++;
+       return `Computer Wins! ${cs} beats ${ps}`;
       } 
   } 
   gameRound();
@@ -28,12 +34,17 @@
     round = 0;
      for (round = 0; round < 5; round++) {
          console.log(round);
+         var psWin;
+         var csWin;
                   if (psWin > csWin) {
-                      alert('You Win! Score ' + psWin '-' + csWin);
+                      alert('You Win! Score ' + psWin + '-' + csWin);
+                  } else if (psWin < csWin) {
+                      alert('Computer Wins! Score ' + psWin + '-' + csWin);
                   } else {
-                      alert('Computer Wins! Score ' + psWin '-' + csWin);
+                    alert('This is a tie Score ' + psWin + '-' + csWin); 
                   }
 
      }
 }   
 game();
+  </script>
