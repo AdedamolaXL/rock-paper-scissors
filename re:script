@@ -1,4 +1,7 @@
 <script>
+    var csWin = 0;
+    var psWin = 0;
+
      function game() {
      var gameChoices = ["rock, paper, scissors"]
 
@@ -16,8 +19,6 @@
       computerSelection = computerPlay();
       var cs = computerSelection;
 
-      var csWin = 0;
-      var psWin = 0;
 
       if ((ps == 'rock' && cs == 'scissors') || (ps == 'paper' && cs == 'rock') || (ps == 'scissors' && cs == 'paper')) {
        psWin++;
@@ -30,12 +31,8 @@
       } 
   } 
   gameRound();
-  var round = gameRound();
-    round = 0;
-     for (round = 0; round < 5; round++) {
+     for (i = 0; i < 5; i++) {
          console.log(round);
-         var psWin;
-         var csWin;
                   if (psWin > csWin) {
                       alert('You Win! Score ' + psWin + '-' + csWin);
                   } else if (psWin < csWin) {
