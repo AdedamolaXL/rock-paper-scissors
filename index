@@ -37,7 +37,7 @@
       var ps = e.target.classList;
   
 
-      if ((cs == 'Rock' && ps == 'Scissors') || (cs == 'Paper' && ps == 'Scissors') || (cs == 'Scissors' && ps == 'Paper')) {
+      if ((cs == 'Rock' && ps == 'Scissors') || (cs == 'Paper' && ps == 'Rock') || (cs == 'Scissors' && ps == 'Paper')) {
         csWin++;
         alert(`Computer Wins! ${cs} beats ${ps}`);
         document.getElementById('Score').innerHTML = `Player Score  ${psWin} | Computer Score  ${csWin}`;
