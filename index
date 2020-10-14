@@ -6,52 +6,71 @@
 </head>
 <body>
  <div class="buttons">
-  <button class = 'btn1'>Rock</button>
-  <button class = 'btn2'>Paper</button>
-  <button class = 'btn3'>Scissors</button>
+  <button class = 'Rock'>Rock</button>
+  <button class = 'Paper'>Paper</button>
+  <button class = 'Scissors'>Scissors</button>
  </div>
+ <p id ='Score'></p>
+ <p id = 'Round-Winner'></p>
 
 
  <script>
-  document.querySelector('.btn1').addEventListener('click', playRound);
-  document.querySelector('.btn2').addEventListener('click', playRound);
-  document.querySelector('.btn3').addEventListener('click', playRound);
-    
+  var gameChoices = ['Rock', 'Paper', 'Scissors'];
+  var csWin = 0;
+  var psWin = 0;
+
+  document.querySelector('.Rock').addEventListener('click', game);
+  document.querySelector('.Paper').addEventListener('click', game);
+  document.querySelector('.Scissors').addEventListener('click', game);
+  document.getElementById('Score').innerHTML = `Player Score: ${psWin} | Computer Score: ${csWin}`;
+
+  function game (e) {
+     
+    function playRound  (cs, ps) {
+      
+      function computerPlay () {
+        return gameChoices[Math.floor(Math.random() * 3)];
+      }
+      computerPlay();
+      var cs = computerPlay();
+
+      var ps = e.target.classList;
   
 
-  function playRound (e) {
-
-    var gameChoices = ['Rock', 'Paper', 'Scissors'];
-    
-
-    var playerSelect = e.target.classList;
-    var ps = playerSelect;
-     
-
-    function computerPlay () {
-      return gameChoices[Math.floor(Math.random() * 3)];
-    }
-    var compSelect = computerPlay();
-    var cs = compSelect;
-    
-    
-    
       if ((cs == 'Rock' && ps == 'Scissors') || (cs == 'Paper' && ps == 'Scissors') || (cs == 'Scissors' && ps == 'Paper')) {
-        
-        return `Computer Wins! ${cs} beats ${ps}`;
-      } else if (cs == ps) {
-        return `This a tie: ${cs} - ${ps}`;
-      } else {
-        
-        return `You Win! ${ps} beats ${cs}`;
+        csWin++;
+        alert(`Computer Wins! ${cs} beats ${ps}`);
+        document.getElementById('Score').innerHTML = `Player Score  ${psWin} | Computer Score  ${csWin}`;
+        return;
+      } 
+      else if (cs == ps) {
+        alert(`This a tie: ${cs} - ${ps}`);
+        document.getElementById('Score').innerHTML = `Player Score  ${psWin}  |  Computer Score  ${csWin}`;
+        return;
+        }
+      else {
+        psWin++;
+        alert(`You Win! ${ps} beats ${cs}`);
+        document.getElementById('Score').innerHTML = `Player Score  ${psWin} |  Computer Score  ${csWin}`;
+        return;
+        }
+    }
+    playRound();
+    
+    function gameResult () {
+      if (psWin > csWin) {
+        document.getElementById('Round-Winner').innerHTML =  'You Winning!';
+      } 
+      else if (psWin < csWin) {
+        document.getElementById('Round-Winner').innerHTML ='Computer Winning!';
+      } 
+      else {
+        document.getElementById('Round-Winner').innerHTML = 'This is a tie';     
       }
+    }
+    gameResult();
   }
   
-
-
-
-   
-
  </script>
 <body>
 </html>
